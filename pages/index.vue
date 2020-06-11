@@ -32,12 +32,12 @@ export default {
   },
   async asyncData ({ $content }) {
     // change the limit for pagination
-    const limit = 1;
+    const limit = 2;
     const skip = 0;
     const allPost = await $content('post').only(['createdAt']).fetch();
     const totalPost = allPost.length;
     const posts = await $content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).limit(limit).fetch();
-    const totalPages = totalPost / limit;
+    const totalPages = Math.ceil(totalPost / limit);
     return {
       posts,
       limit,
