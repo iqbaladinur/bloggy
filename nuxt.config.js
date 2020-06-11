@@ -5,11 +5,11 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Bloggy: headless blog template with nuxtjs',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'headless blog template with nuxtjs' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -45,6 +45,7 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    '@nuxt/content',
   ],
   /*
   ** Axios module configuration
@@ -55,6 +56,9 @@ export default {
   /*
   ** Build configuration
   */
+  content: {
+  // My custom configuration
+  },
   build: {
     /*
     ** You can extend webpack config here

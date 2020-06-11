@@ -1,77 +1,55 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        bloggy
-      </h1>
-      <h2 class="subtitle">
-        headless blog template with nuxtjs
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <article>
+    <h1 class="text-center">raw</h1>
+    <pre>
+      {{ post }}
+    </pre>
+    <button v-if="currentPage < totalPages" @click="nextArticle">
+      next
+    </button>
+    <button v-if="currentPage > 1" @click="prevArticle">
+      prev
+    </button>
+  </article>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+const requiredPostKey = ['title', 'slug', 'description'];
 export default {
-  components: {
-    Logo
+  async asyncData ({ $content }) {
+    // change the limit for pagination
+    const limit = 1;
+    const skip = 0;
+    const allPost = await $content('post').only(['createdAt']).fetch();
+    const totalPost = allPost.length;
+    const post = await $content('post').only(requiredPostKey).limit(limit).fetch();
+    const totalPages = totalPost / limit;
+    return {
+      post,
+      limit,
+      skip,
+      totalPost,
+      totalPages,
+      currentPage: 1
+    }
+  },
+  methods: {
+    async nextArticle() {
+      const nextPage = this.currentPage + 1;
+      this.currentPage = nextPage <= this.totalPages ? nextPage : this.currentPage;
+      if (nextPage <= this.totalPages) {
+        this.skip += this.limit;
+        this.post = await this.$content('post').only(requiredPostKey).limit(this.limit).skip(this.skip).fetch();
+      }
+    },
+    async prevArticle() {
+      const prevPage = this.currentPage - 1;
+      this.currentPage = prevPage < 1 ? 1 : prevPage;
+      if (prevPage >= 1) {
+        this.skip -= this.limit;
+        this.post = await this.$content('post').only(requiredPostKey).limit(this.limit).skip(this.skip).fetch();
+      }
+    },
   }
 }
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
