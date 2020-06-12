@@ -8,7 +8,7 @@
     .
     ├── ...
     ├── content                 	# nuxt-content folder
-    │   └── post          			# your blog post
+    │   └── post          		# your blog post
     │   	├── hello-world.md      # content
     │   	└── ....md              # content
     └── ...
