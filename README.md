@@ -1,6 +1,17 @@
-# bloggy
 
-> headless blog template with nuxtjs
+# Bloggy
+> bloggy is minimum template for headless blog built with vue meta-framework nuxtjs, nuxt-content and tailwind css.
+
+## Write Content
+> write content under this stucture.
+
+    .
+    ├── ...
+    ├── content                 	# nuxt-content folder
+    │   └── post          			# your blog post
+    │   	├── hello-world.md      # content
+    │   	└── ....md              # content
+    └── ...
 
 ## Build Setup
 
@@ -20,5 +31,3 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-
-Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
