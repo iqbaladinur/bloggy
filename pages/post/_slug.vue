@@ -12,6 +12,18 @@
 
 <script>
 export default {
+  head () {
+    return {
+      title: this.content.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.content.description },
+        { hid: 'og:title', property: 'og:title', content: this.content.title },
+        { hid: 'og:description', property: 'og:description', content: this.content.description },
+        { hid: 'twitter:title', name: 'twitter:title', content: this.content.title },
+        { hid: 'twitter:description', name: 'twitter:description', content: this.content.description }
+      ]
+    }
+  },
   name: 'SinglePost',
   async asyncData({ params, $content, error }){
     const slugData = params.slug;
@@ -31,18 +43,6 @@ export default {
       content: content.length > 0 ? content[0] : null
     }
   },
-  head () {
-    return {
-      title: this.content.title,
-      meta: [
-        { hid: 'description', name: 'description', content: this.content.description },
-        { hid: 'og:title', property: 'og:title', content: this.content.title },
-        { hid: 'og:description', property: 'og:description', content: this.content.description },
-        { hid: 'twitter:title', name: 'twitter:title', content: this.content.title },
-        { hid: 'twitter:description', name: 'twitter:description', content: this.content.description }
-      ]
-    }
-  }
 }
 </script>
 

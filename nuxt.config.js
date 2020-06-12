@@ -1,7 +1,7 @@
-const defaultBlogTitle = 'Bloggy: headless blog template with nuxtjs';
+const defaultBlogTitle = 'Bloggy';
 const defaultBlogDesc = 'Headless blog template with nuxtjs.';
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
   ** Headers of the page
   */
