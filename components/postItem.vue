@@ -1,17 +1,14 @@
 <template>
-  <div class="">
-    <h1 class="text-lg">
+  <div class="py-2 mb-1">
+    <nuxt-link :to="`post/${slug}`" class="text-lg underline">
       {{ title }}
-    </h1>
+    </nuxt-link>
     <p class="text-xs text-gray-300">
-      {{ createdAt }}
+      {{ formatLocaleDateString(createdAt) }}
     </p>
     <p class="text-xs">
       {{ description }}
     </p>
-    <nuxt-link :to="`post/${slug}`" class="text-blue-600">
-      read more
-    </nuxt-link>
   </div>
 </template>
 
@@ -39,6 +36,11 @@ export default {
       default: new Date().toLocaleDateString(),
       required: true,
     }
-  }
+  },
+  methods: {
+    formatLocaleDateString(date) {
+      return new Date(date).toLocaleDateString();
+    }
+  },
 }
 </script>

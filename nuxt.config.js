@@ -1,15 +1,20 @@
-
+const defaultBlogTitle = 'Bloggy: headless blog template with nuxtjs';
+const defaultBlogDesc = 'Headless blog template with nuxtjs.';
 export default {
   mode: 'spa',
   /*
   ** Headers of the page
   */
   head: {
-    title: 'Bloggy: headless blog template with nuxtjs',
+    title: defaultBlogTitle,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'headless blog template with nuxtjs' }
+      { hid: 'description', name: 'description', content: defaultBlogDesc },
+      { hid: 'og:title', property: 'og:title', content: defaultBlogTitle },
+      { hid: 'og:description', property: 'og:description', content: defaultBlogDesc },
+      { hid: 'twitter:title', name: 'twitter:title', content: defaultBlogTitle },
+      { hid: 'twitter:description', name: 'twitter:description', content: defaultBlogDesc }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -18,7 +23,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#000' },
   /*
   ** Global CSS
   */
@@ -28,6 +33,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/update-client.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -64,6 +70,14 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  generate: {
+    async routes () {
+      const { $content } = require('@nuxt/content');
+      const slugs = await $content('post').only(['slug']).fetch();
+
+      return slugs.map(slug => `/post/${slug.slug}`);
     }
   }
 }

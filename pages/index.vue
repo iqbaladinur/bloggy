@@ -1,28 +1,25 @@
 <template>
-  <div class="container flex">
-    <article class="mx-auto">
-      <post-item
-        class="p-2 bg-blue-300"
-        v-for="(post, key) in posts"
-        :key="key"
-        :title="post.title"
-        :description="post.description"
-        :slug="post.slug"
-        :created-at="post.createdAt"
-      />
-      <button v-if="currentPage > 1" @click="prevArticle">
-        prev
-      </button>
-      <button v-if="currentPage < totalPages" @click="nextArticle">
-        next
-      </button>
-    </article>
-  </div>
+  <article class="container mx-auto lg:px-40 px-10">
+    <post-item
+      v-for="(post, key) in posts"
+      :key="key"
+      :title="post.title"
+      :description="post.description"
+      :slug="post.slug"
+      :created-at="post.publishedAt"
+    />
+    <button v-if="currentPage > 1" @click="prevArticle">
+      prev
+    </button>
+    <button v-if="currentPage < totalPages" @click="nextArticle">
+      next
+    </button>
+  </article>
 </template>
 
 <script>
 import postItem from '~/components/postItem';
-const requiredPostKey = ['title', 'slug', 'description', 'createdAt'];
+const requiredPostKey = ['title', 'slug', 'description', 'publishedAt'];
 const sortKey = 'title';
 const sortDirection = 'asc';
 export default {
