@@ -30,4 +30,13 @@ $ npm run start
 $ npm run generate
 ```
 
+## Development
+
+1. Clone this repository
+2. Install dependencies using `npm install`
+3. Start development server using `npm run dev`
+
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## LICENSE
+[MIT License](./LICENSE)
