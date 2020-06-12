@@ -1,20 +1,25 @@
 <template>
   <article class="container mx-auto lg:px-40 px-10">
-    <post-item
-      v-for="(post, key) in posts"
-      :key="key"
-      :title="post.title"
-      :description="post.description"
-      :slug="post.slug"
-      :created-at="post.publishedAt"
-    />
-    <div class="mt-5">
-      <button v-if="currentPage > 1" @click="prevArticle" class="px-4 border border-black focus:outline-none">
-        prev
-      </button>
-      <button v-if="currentPage < totalPages" @click="nextArticle" class="px-4 border border-black focus:outline-none">
-        next
-      </button>
+    <div v-if="!isLoading">
+      <post-item
+        v-for="(post, key) in posts"
+        :key="key"
+        :title="post.title"
+        :description="post.description"
+        :slug="post.slug"
+        :created-at="post.publishedAt"
+      />
+      <div class="mt-5">
+        <button v-if="currentPage > 1" @click="prevArticle" class="px-4 border border-black focus:outline-none">
+          prev
+        </button>
+        <button v-if="currentPage < totalPages" @click="nextArticle" class="px-4 border border-black focus:outline-none">
+          next
+        </button>
+      </div>
+    </div>
+    <div v-else >
+      loading...
     </div>
   </article>
 </template>
@@ -31,7 +36,7 @@ export default {
   },
   async asyncData ({ $content }) {
     // change the limit for pagination
-    const limit = 2;
+    const limit = 1;
     const skip = 0;
     const allPost = await $content('post').only(['createdAt']).fetch();
     const totalPost = allPost.length;
@@ -46,13 +51,20 @@ export default {
       currentPage: 1
     }
   },
+  data() {
+    return {
+      isLoading: false
+    }
+  },
   methods: {
     async nextArticle() {
       const nextPage = this.currentPage + 1;
       this.currentPage = nextPage <= this.totalPages ? nextPage : this.currentPage;
       if (nextPage <= this.totalPages) {
         this.skip += this.limit;
+        this.isLoading = true;
         this.posts = await this.$content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).skip(this.skip).limit(this.limit).fetch();
+        this.isLoading = false;
       }
     },
     async prevArticle() {
@@ -60,7 +72,9 @@ export default {
       this.currentPage = prevPage < 1 ? 1 : prevPage;
       if (prevPage >= 1) {
         this.skip -= this.limit;
+        this.isLoading = true;
         this.posts = await this.$content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).skip(this.skip).limit(this.limit).fetch();
+        this.isLoading = false;
       }
     },
   }
