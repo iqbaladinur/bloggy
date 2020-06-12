@@ -51,7 +51,6 @@ export default {
       if (nextPage <= this.totalPages) {
         this.skip += this.limit;
         this.posts = await this.$content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).skip(this.skip).limit(this.limit).fetch();
-        console.log(this.posts);
       }
     },
     async prevArticle() {
@@ -60,7 +59,6 @@ export default {
       if (prevPage >= 1) {
         this.skip -= this.limit;
         this.posts = await this.$content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).skip(this.skip).limit(this.limit).fetch();
-        console.log(this.posts);
       }
     },
   }
