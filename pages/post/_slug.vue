@@ -4,7 +4,7 @@
       {{ content.title }}
     </h1>
     <h2 class="text-xs">
-      {{ `${formatLocaleDateString(content.publishedAt)} oleh ${content.author}` }}
+      {{ `${formatLocaleDateString(content.publishedAt)} by ${content.author}` }}
     </h2>
     <nuxt-content :document="content" />
   </div>
