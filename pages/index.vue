@@ -58,7 +58,9 @@ export default {
       this.currentPage = prevPage < 1 ? 1 : prevPage;
       if (prevPage >= 1) {
         this.skip -= this.limit;
+        console.log(this.skip);
         this.posts = await this.$content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).limit(this.limit).skip(this.skip).fetch();
+        console.log(this.post);
       }
     },
   }
