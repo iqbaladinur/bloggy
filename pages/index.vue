@@ -50,6 +50,7 @@ export default {
       this.currentPage = nextPage <= this.totalPages ? nextPage : this.currentPage;
       if (nextPage <= this.totalPages) {
         this.skip += this.limit;
+        console.log(this.skip);
         this.posts = await this.$content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).limit(this.limit).skip(this.skip).fetch();
         console.log(this.posts);
       }
