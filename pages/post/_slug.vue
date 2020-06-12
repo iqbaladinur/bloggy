@@ -26,6 +26,7 @@ export default {
       ]
     }
   },
+  layout: 'article',
   name: 'SinglePost',
   async asyncData({ params, $content, error }){
     const slugData = params.slug;

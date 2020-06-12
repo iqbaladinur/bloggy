@@ -4,6 +4,11 @@
     <div class="main-body">
       <nuxt />
     </div>
+    <div class="flex">
+      <a href="#" class="m-auto">
+        [^]
+      </a>
+    </div>
     <footer-bar />
   </div>
 </template>
@@ -11,7 +16,7 @@
 import navbar from '~/components/navbar.vue';
 import footerBar from '~/components/footer.vue';
 export default {
-  name: 'Default',
+  name: 'Article',
   components: {
     navbar,
     footerBar
