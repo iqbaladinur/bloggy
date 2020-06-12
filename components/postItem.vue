@@ -1,18 +1,20 @@
 <template>
   <div class="py-2 mb-1">
-    <nuxt-link :to="`post/${slug}`" class="text-lg underline">
+    <nuxt-link :to="`post/${slug}`" class="text-xl underline hover:text-blue-700">
       {{ title }}
     </nuxt-link>
-    <p class="text-xs text-gray-300">
+    <p class="text-xs">
       {{ formatLocaleDateString(createdAt) }}
     </p>
-    <p class="text-xs">
+    <p class="text-sm">
       {{ description }}
     </p>
   </div>
 </template>
 
 <script>
+import { formatLocaleDateString } from '~/helper/dateHelper';
+
 export default {
   name: 'PostItem',
   props: {
@@ -33,14 +35,12 @@ export default {
     },
     createdAt: {
       type: String,
-      default: new Date().toLocaleDateString(),
+      default: formatLocaleDateString(),
       required: true,
     }
   },
   methods: {
-    formatLocaleDateString(date) {
-      return new Date(date).toLocaleDateString();
-    }
+    formatLocaleDateString
   },
 }
 </script>

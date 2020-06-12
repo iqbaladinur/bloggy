@@ -1,6 +1,7 @@
 ---
 title: Hello World in BLOGGY
 description: hello this is the first post in bloggy.
+author: Iqbal Adi Nurmansyah
 publishedAt: 2020-01-01T00:00:00.000Z
 ---
 

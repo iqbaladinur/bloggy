@@ -8,12 +8,14 @@
       :slug="post.slug"
       :created-at="post.publishedAt"
     />
-    <button v-if="currentPage > 1" @click="prevArticle">
-      prev
-    </button>
-    <button v-if="currentPage < totalPages" @click="nextArticle">
-      next
-    </button>
+    <div class="mt-5">
+      <button v-if="currentPage > 1" @click="prevArticle" class="px-4 border border-black focus:outline-none">
+        prev
+      </button>
+      <button v-if="currentPage < totalPages" @click="nextArticle" class="px-4 border border-black focus:outline-none">
+        next
+      </button>
+    </div>
   </article>
 </template>
 
@@ -21,7 +23,7 @@
 import postItem from '~/components/postItem';
 const requiredPostKey = ['title', 'slug', 'description', 'publishedAt'];
 const sortKey = 'title';
-const sortDirection = 'asc';
+const sortDirection = 'desc';
 export default {
   name: 'Home',
   components: {

@@ -3,14 +3,16 @@
     <h1 class="text-3xl font-bold">
       {{ content.title }}
     </h1>
-    <h2 class="text-xs text-gray-500">
-      {{ new Date(content.publishedAt).toLocaleDateString() }}
+    <h2 class="text-xs">
+      {{ `${formatLocaleDateString(content.publishedAt)} oleh ${content.author}` }}
     </h2>
     <nuxt-content :document="content" />
   </div>
 </template>
 
 <script>
+import { formatLocaleDateString } from '~/helper/dateHelper';
+
 export default {
   head () {
     return {
@@ -42,6 +44,9 @@ export default {
     return {
       content: content.length > 0 ? content[0] : null
     }
+  },
+  methods: {
+    formatLocaleDateString
   },
 }
 </script>
