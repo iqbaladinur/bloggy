@@ -31,8 +31,28 @@ const sortKey = 'title';
 const sortDirection = 'desc';
 export default {
   name: 'Home',
+  head () {
+    return {
+      title: 'Bloggy',
+      meta: [
+        { hid: 'description', name: 'description', content: 'this is home page' },
+        { hid: 'og:title', property: 'og:title', content: 'home' },
+        { hid: 'og:description', property: 'og:description', content: 'this is home page' },
+        { hid: 'twitter:title', name: 'twitter:title', content: 'home' },
+        { hid: 'twitter:description', name: 'twitter:description', content: 'this is home page' }
+      ]
+    }
+  },
   components: {
     postItem
+  },
+  async fetch({ store, $content, error }) {
+    try {
+      const listMenu = await $content('page').only(['navTitle', 'slug']).fetch();
+      store.commit('menu/storePageMenu', listMenu);
+    } catch (error) {
+      error({ statusCode: 500, message: error })
+    }
   },
   async asyncData ({ $content }) {
     // change the limit for pagination

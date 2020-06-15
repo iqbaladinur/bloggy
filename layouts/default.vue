@@ -15,7 +15,7 @@ export default {
   components: {
     navbar,
     footerBar
-  }
+  },
 }
 </script>
 <style scoped>

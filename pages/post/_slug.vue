@@ -28,6 +28,14 @@ export default {
   },
   layout: 'article',
   name: 'SinglePost',
+  async fetch({ store, $content, error }) {
+    try {
+      const listMenu = await $content('page').only(['navTitle', 'slug']).fetch();
+      store.commit('menu/storePageMenu', listMenu);
+    } catch (error) {
+      error({ statusCode: 500, message: error })
+    }
+  },
   async asyncData({ params, $content, error }){
     const slugData = params.slug;
     let content;

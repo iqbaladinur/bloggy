@@ -41,21 +41,21 @@
 </template>
 
 <script>
-import Logo from "~/components/logo.vue";
+import Logo from '~/components/logo.vue';
 export default {
   name: 'Navbar',
   components: {
     Logo,
   },
+  computed: {
+    menu() {
+      return this.$store.getters['menu/getMenu'];
+    }
+  },
   data() { 
     return {
-      menu: [],
       isHide: true
     }
   },
-  async created() {
-    const navMenu = await this.$content('page').only(['navTitle', 'slug']).fetch();
-    this.menu = navMenu;
-  }
 };
 </script>
