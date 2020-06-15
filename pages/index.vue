@@ -33,13 +33,13 @@ export default {
   name: 'Home',
   head () {
     return {
-      title: 'Bloggy',
+      title: process.env.blogTitle,
       meta: [
-        { hid: 'description', name: 'description', content: 'this is home page' },
-        { hid: 'og:title', property: 'og:title', content: 'home' },
-        { hid: 'og:description', property: 'og:description', content: 'this is home page' },
-        { hid: 'twitter:title', name: 'twitter:title', content: 'home' },
-        { hid: 'twitter:description', name: 'twitter:description', content: 'this is home page' }
+        { hid: 'description', name: 'description', content: process.env.blogDesc },
+        { hid: 'og:title', property: 'og:title', content: process.env.blogTitle },
+        { hid: 'og:description', property: 'og:description', content: process.env.blogDesc },
+        { hid: 'twitter:title', name: 'twitter:title', content: process.env.blogTitle },
+        { hid: 'twitter:description', name: 'twitter:description', content: process.env.blogDesc }
       ]
     }
   },
