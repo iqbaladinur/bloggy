@@ -1,24 +1,26 @@
-const defaultBlogTitle = 'Bloggy';
-const defaultBlogDesc = 'Headless blog template with nuxtjs.';
 export default {
   mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    title: defaultBlogTitle,
+    title: process.env.BLOG_TITLE,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: defaultBlogDesc },
-      { hid: 'og:title', property: 'og:title', content: defaultBlogTitle },
-      { hid: 'og:description', property: 'og:description', content: defaultBlogDesc },
-      { hid: 'twitter:title', name: 'twitter:title', content: defaultBlogTitle },
-      { hid: 'twitter:description', name: 'twitter:description', content: defaultBlogDesc }
+      { hid: 'description', name: 'description', content: process.env.BLOG_DESC },
+      { hid: 'og:title', property: 'og:title', content: process.env.BLOG_TITLE },
+      { hid: 'og:description', property: 'og:description', content: process.env.BLOG_DESC },
+      { hid: 'twitter:title', name: 'twitter:title', content: process.env.BLOG_TITLE },
+      { hid: 'twitter:description', name: 'twitter:description', content: process.env.BLOG_DESC }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+  env: {
+    blogTitle: process.env.BLOG_TITLE,
+    blogDesc: process.env.BLOG_DESC
   },
   /*
   ** Customize the progress-bar color
