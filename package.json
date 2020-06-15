@@ -8,7 +8,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "create-post": "node command_tools/createPost.js",
+    "create-page": "node command_tools/createPage.js"
   },
   "dependencies": {
     "@nuxt/content": "^1.3.2",
