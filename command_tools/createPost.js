@@ -9,7 +9,8 @@ function createPost(title, locationFolder) {
                      + 'description: Post description here.\n'
                      + `author: ${packagejson.author}\n`
                      + `publishedAt: ${new Date().toISOString()}\n`
-                     + '---';
+                     + '---\n'
+                     + `\n## hello world from ${title.replace(/-/g, " ")}`;
   if (title) {
     if (!fs.existsSync(`${locationFolder}${title}.md`)) {
       fs.writeFileSync(`${locationFolder}${title}.md`, postTemplate);

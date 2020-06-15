@@ -8,7 +8,8 @@ function createPage(title, locationFolder) {
                      + `title: ${title.replace(/-/g, " ")}\n`
                      + 'description: page description here.\n'
                      + 'type: static\n'
-                     + '---';
+                     + '---\n'
+                     + `\n## hello world from ${title.replace(/-/g, " ")}'s page`;
   if (title) {
     if (!fs.existsSync(`${locationFolder}${title}.md`)) {
       fs.writeFileSync(`${locationFolder}${title}.md`, pageTemplate);
