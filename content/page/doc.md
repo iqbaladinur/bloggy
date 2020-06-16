@@ -6,17 +6,36 @@ type: static
 ---
 
 ### Getting Started
+<code-group>
+  <code-block label="Yarn" active>
+
+  ```bash
+  yarn add @nuxt/content
+  ```
+
+  </code-block>
+  <code-block label="NPM">
+
+  ```bash
+  npm install @nuxt/content
+  ```
+
+  </code-block>
+</code-group>
 1. Use this github boilerplate, [use it](https://github.com/iqbaladinur/bloggy/generate).
 2. Install dependencies with bellow command.
+
 ```bash
 npm install
 ```
 3. Create .env file, for example see env.example.
 4. Run development mode.
+
 ```bash
 npm run dev
 ```
 5. Create Content.
+
 ```bash
 # create page
 npm run create-page your-page-title
@@ -25,6 +44,7 @@ npm run create-page your-page-title
 npm run create-post your-post-title
 ```
 6. Deployment.
+
 ```bash
 # generate static site result in ./dist
 # you can create deployment on netlify, github pages, vercel or other static host.
