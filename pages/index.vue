@@ -1,21 +1,27 @@
 <template>
   <article class="container mx-auto lg:px-40 px-10">
     <div v-if="!isLoading">
-      <post-item
-        v-for="(post, key) in posts"
-        :key="key"
-        :title="post.title"
-        :description="post.description"
-        :slug="post.slug"
-        :created-at="post.publishedAt"
-      />
-      <div class="mt-5">
-        <button v-if="currentPage > 1" @click="prevArticle" class="px-4 border border-black focus:outline-none">
-          prev
-        </button>
-        <button v-if="currentPage < totalPages" @click="nextArticle" class="px-4 border border-black focus:outline-none">
-          next
-        </button>
+      <div v-if="posts.length > 0">
+        <post-item
+          v-for="(post, key) in posts"
+          :key="key"
+          :title="post.title"
+          :description="post.description"
+          :slug="post.slug"
+          :created-at="post.publishedAt"
+          :category="post.category"
+        />
+        <div class="mt-5">
+          <button v-if="currentPage > 1" @click="prevArticle" class="px-4 border border-black focus:outline-none">
+            prev
+          </button>
+          <button v-if="currentPage < totalPages" @click="nextArticle" class="px-4 border border-black focus:outline-none">
+            next
+          </button>
+        </div>
+      </div>
+      <div v-else class="text-center">
+        You haven't create post.
       </div>
     </div>
     <div v-else >
@@ -26,7 +32,7 @@
 
 <script>
 import postItem from '~/components/postItem';
-const requiredPostKey = ['title', 'slug', 'description', 'publishedAt'];
+const requiredPostKey = ['title', 'slug', 'description', 'publishedAt', 'category'];
 const sortKey = 'title';
 const sortDirection = 'desc';
 export default {

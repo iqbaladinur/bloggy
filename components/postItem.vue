@@ -3,6 +3,14 @@
     <nuxt-link :to="`post/${slug}`" class="text-xl underline hover:text-blue-700">
       {{ title }}
     </nuxt-link>
+    <div class="text-xs">
+      <nuxt-link
+        :to="`/categories/${encodeURIComponent(category)}`"
+        class="hover:text-blue-300 capitalize"
+      >
+        &#127861; {{ category }}
+      </nuxt-link>
+    </div>
     <p class="text-xs">
       {{ formatLocaleDateString(createdAt) }}
     </p>
@@ -37,6 +45,11 @@ export default {
       type: String,
       default: formatLocaleDateString(),
       required: true,
+    },
+    category: {
+      type: String,
+      default: 'uncategorized',
+      required: false
     }
   },
   methods: {

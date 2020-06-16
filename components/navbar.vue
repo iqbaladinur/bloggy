@@ -2,12 +2,12 @@
   <div class="bg-white">
     <nav class="container mx-auto flex items-center justify-between flex-wrap p-2">
       <div>
-        <a href="/" class="flex items-center flex-shrink-0">
+        <nuxt-link to="/" class="flex items-center flex-shrink-0">
           <logo class="w-10 h-10"/>
           <span class="ml-2">
             bloggy
           </span>
-        </a>
+        </nuxt-link>
       </div>
       <div class="block lg:hidden">
         <button class="flex items-center px-3 py-2 border border-black" @click="isHide = !isHide">
@@ -17,10 +17,16 @@
       <div class="w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto" :class="{ 'hidden' : isHide}">
         <div class="text-sm lg:flex-grow px-2 lg:px-10">
           <nuxt-link
+            :to="`/categories`"
+            class="capitalize block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3"
+          >
+            Categories
+          </nuxt-link>
+          <nuxt-link
             v-for="(item, key) in menu"
             :key="key" 
             :to="`/pages/${item.slug}`"
-            class="block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3"
+            class="capitalize block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3"
           >
             {{ item.navTitle }}
           </nuxt-link>
