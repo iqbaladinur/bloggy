@@ -22,7 +22,7 @@ export default {
   env: {
     blogTitle: process.env.BLOG_TITLE,
     blogDesc: process.env.BLOG_DESC,
-    perPage: process.env.POST_PAGINATION_PERPAGE
+    perPage: process.env.POST_PAGINATION_PERPAGE || 10
   },
   /*
   ** Customize the progress-bar color

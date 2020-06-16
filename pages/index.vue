@@ -56,7 +56,7 @@ export default {
   },
   async asyncData ({ $content }) {
     // change the limit for pagination
-    const limit = process.env.perPage || 1;
+    const limit = process.env.perPage;
     const skip = 0;
     const allPost = await $content('post').only(['createdAt']).fetch();
     const totalPost = allPost.length;
