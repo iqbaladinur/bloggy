@@ -85,11 +85,13 @@ export default {
   generate: {
     async routes () {
       const { $content } = require('@nuxt/content');
-      const postSlugs = await $content('post').only(['slug']).fetch();
+      const postSlugs = await $content('post').only(['slug', 'category']).fetch();
       const pageSlugs = await $content('page').only(['slug']).fetch();
+      const allCategories = [...postSlugs];
       const post = postSlugs.map(slug => `/post/${slug.slug}`);
       const page = pageSlugs.map(slug => `/pages/${slug.slug}`);
-      return [...post, ...page];
+      const distinctCategories = [...new Set(allCategories.map(value => `/categories/${encodeURIComponent(value.category)}`))];
+      return [...post, ...page, ...distinctCategories];
     }
   }
 }

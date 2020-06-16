@@ -142,9 +142,9 @@ export default {
     @apply bg-gray-100 p-1 text-lg shadow-xs rounded;
   }
   & pre[class*="language-"] {
-    @apply rounded mt-0 mb-4 bg-gray-800 text-sm relative;
+    @apply rounded mt-0 mb-4 bg-gray-200 text-sm relative;
     > code {
-      @apply bg-gray-800 relative;
+      @apply bg-gray-200 relative;
       text-shadow: none;
     }
   }

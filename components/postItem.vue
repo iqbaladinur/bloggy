@@ -1,6 +1,6 @@
 <template>
   <div class="py-2 mb-1">
-    <nuxt-link :to="`post/${slug}`" class="text-xl underline hover:text-blue-700">
+    <nuxt-link :to="`/post/${slug}`" class="text-xl underline hover:text-blue-700">
       {{ title }}
     </nuxt-link>
     <div class="text-xs">
