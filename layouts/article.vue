@@ -23,6 +23,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .main-body {
   min-height: calc(100vh - 7.5rem);
