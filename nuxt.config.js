@@ -1,5 +1,6 @@
 require('dotenv').config()
 export default {
+  target: 'static',
   mode: 'universal',
   /*
   ** Headers of the page

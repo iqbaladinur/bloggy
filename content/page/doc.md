@@ -6,22 +6,6 @@ type: static
 ---
 
 ### Getting Started
-<code-group>
-  <code-block label="Yarn" active>
-
-  ```bash
-  yarn add @nuxt/content
-  ```
-
-  </code-block>
-  <code-block label="NPM">
-
-  ```bash
-  npm install @nuxt/content
-  ```
-
-  </code-block>
-</code-group>
 1. Use this github boilerplate, [use it](https://github.com/iqbaladinur/bloggy/generate).
 2. Install dependencies with bellow command.
 
