@@ -37,12 +37,12 @@ export default {
   }
 }
 .nuxt-content h2 {
-  @apply text-3xl font-normal mb-4 pb-1 border-b -mt-16 pt-24;
+  @apply text-3xl font-black mb-4 pb-1 border-b -mt-16 pt-24;
   & > a {
     @apply ml-6;
     &::before {
       content: "#";
-      @apply text-blue-500 font-normal -ml-6 pr-1 absolute opacity-100;
+      @apply text-green-500 font-normal -ml-6 pr-1 absolute opacity-100;
     }
   }
   &:hover {
@@ -52,12 +52,12 @@ export default {
   }
 }
 .nuxt-content h3 {
-  @apply text-2xl font-normal mb-2 pb-1 border-b -mt-16 pt-20;
+  @apply text-2xl font-extrabold mb-2 pb-1 border-b -mt-16 pt-20;
   & > a {
     @apply ml-6;
     &::before {
       content: "#";
-      @apply text-blue-500 font-normal -ml-5 pr-1 absolute opacity-100;
+      @apply text-green-500 font-normal -ml-5 pr-1 absolute opacity-100;
     }
   }
   &:hover {
@@ -104,15 +104,15 @@ export default {
   & > code,
   & li > code,
   & p > code {
-    @apply bg-gray-100 p-1 text-sm shadow-xs rounded !important;
+    @apply bg-gray-100 p-1 text-sm shadow-xs rounded;
   }
   & h3 > code {
-    @apply bg-gray-100 p-1 text-lg shadow-xs rounded !important;
+    @apply bg-gray-100 p-1 text-lg shadow-xs rounded;
   }
   & pre[class*="language-"] {
-    @apply rounded mt-0 mb-4 bg-gray-200 text-sm relative !important;
+    @apply rounded mt-0 mb-4 bg-gray-800 text-sm relative;
     > code {
-      @apply bg-gray-200 relative !important;
+      @apply bg-gray-800 relative;
       text-shadow: none;
     }
   }

@@ -6,8 +6,7 @@
 */
 module.exports = {
   purge: {
-    //enabled: process.env.NODE_ENV === 'production',
-    enabled: false,
+    enabled: process.env.NODE_ENV === 'production',
     content: [
       'content/**/*.md',
       'components/**/*.vue',

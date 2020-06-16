@@ -73,6 +73,11 @@ export default {
   */
   content: {
   // My custom configuration
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-material-oceanic.css'
+      }
+    }
   },
   build: {
     /*
