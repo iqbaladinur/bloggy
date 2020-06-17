@@ -3,9 +3,13 @@
     <nav class="container mx-auto flex items-center justify-between flex-wrap p-2">
       <div>
         <nuxt-link to="/" class="flex items-center flex-shrink-0">
-          <logo class="w-10 h-10"/>
-          <span class="ml-2">
-            bloggy
+          <div class="w-10 h-10 flex">
+            <p class="m-auto text-2xl">
+              &#128211;
+            </p>
+          </div>
+          <span class="text-sm font-bold">
+            Bloggy
           </span>
         </nuxt-link>
       </div>
@@ -18,7 +22,7 @@
         <div class="text-sm lg:flex-grow px-2 lg:px-10">
           <nuxt-link
             :to="`/categories`"
-            class="capitalize block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3"
+            class="capitalize block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3 hover:underline"
           >
             Categories
           </nuxt-link>
@@ -26,7 +30,7 @@
             v-for="(item, key) in menu"
             :key="key" 
             :to="`/pages/${item.slug}`"
-            class="capitalize block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3"
+            class="capitalize block mt-3 hover:text-blue-600 lg:inline-block lg:mt-0 mr-4 lg:mb-0 mb-3 hover:underline"
           >
             {{ item.navTitle }}
           </nuxt-link>
@@ -35,7 +39,7 @@
           <div class="w-full">
             <a
               href="https://github.com/iqbaladinur/bloggy"
-              class="inline-block w-full text-center text-sm px-4 py-1 leading-none border border-gray-800 hover:bg-black hover:text-white mt-0"
+              class="inline-block w-full text-center text-sm px-4 py-2 leading-none border border-gray-800 hover:bg-black hover:text-white mt-0"
             >
               Github
             </a>
@@ -47,12 +51,8 @@
 </template>
 
 <script>
-import Logo from '~/components/logo.vue';
 export default {
   name: 'Navbar',
-  components: {
-    Logo,
-  },
   computed: {
     menu() {
       return this.$store.getters['menu/getMenu'];

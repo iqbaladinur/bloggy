@@ -3,7 +3,6 @@
     <p class="text-center m-auto text-xs px-2">
       {{ `Bloggy ${year}, view source on ` }}
       <a href="https://github.com/iqbaladinur/bloggy" class="text-blue-300">github. </a>
-      Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </p>
   </footer>
 </template>

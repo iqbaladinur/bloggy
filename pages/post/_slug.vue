@@ -3,17 +3,17 @@
     <h1 class="text-3xl font-bold">
       {{ content.title }}
     </h1>
+    <div class="text-xs">
+      <nuxt-link
+        :to="`/categories/${encodeURIComponent(content.category)}`"
+        class="hover:text-blue-300"
+      >
+        &#128194; {{ content.category }}
+      </nuxt-link>
+    </div>
     <h2 class="text-xs">
       {{ `${formatLocaleDateString(content.publishedAt)} by ${content.author}` }}
     </h2>
-    <div class="text-xs mt-1">
-      <nuxt-link
-        :to="`/categories/${encodeURIComponent(content.category)}`"
-        class="hover:text-blue-300 capitalize"
-      >
-        &#127861; {{ content.category }}
-      </nuxt-link>
-    </div>
     <nuxt-content :document="content" />
   </div>
 </template>

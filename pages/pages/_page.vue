@@ -9,13 +9,14 @@ import { formatLocaleDateString } from '~/helper/dateHelper';
 
 export default {
   head () {
+    const titlePage = `${process.env.blogTitle} | ${this.content.title}`;
     return {
-      title: this.content.title,
+      title: titlePage,
       meta: [
         { hid: 'description', name: 'description', content: this.content.description },
-        { hid: 'og:title', property: 'og:title', content: this.content.title },
+        { hid: 'og:title', property: 'og:title', content: titlePage },
         { hid: 'og:description', property: 'og:description', content: this.content.description },
-        { hid: 'twitter:title', name: 'twitter:title', content: this.content.title },
+        { hid: 'twitter:title', name: 'twitter:title', content: titlePage },
         { hid: 'twitter:description', name: 'twitter:description', content: this.content.description }
       ]
     }

@@ -6,9 +6,9 @@
     <div class="text-xs">
       <nuxt-link
         :to="`/categories/${encodeURIComponent(category)}`"
-        class="hover:text-blue-300 capitalize"
+        class="hover:text-blue-300"
       >
-        &#127861; {{ category }}
+        &#128194; {{ category }}
       </nuxt-link>
     </div>
     <p class="text-xs">

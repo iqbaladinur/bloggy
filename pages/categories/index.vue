@@ -11,7 +11,7 @@
         :to="`/categories/${encodeURIComponent(value)}`"
         class="w-full lg:w-1/5 px-4 py-2 border border-black text-center hover:bg-black hover:text-white m-2"
       >
-        {{ value }}
+        &#128194; {{ value }}
       </nuxt-link>
     </div>
     <div v-else class="text-center mt-4">
