@@ -1,4 +1,14 @@
-require('dotenv').config()
+require('dotenv').config();
+const getAllStaticRoute = async function() {
+  const { $content } = require('@nuxt/content');
+  const postSlugs = await $content('post').only(['slug', 'category']).fetch();
+  const pageSlugs = await $content('page').only(['slug']).fetch();
+  const allCategories = [...postSlugs];
+  const post = postSlugs.map(slug => `/post/${slug.slug}`);
+  const page = pageSlugs.map(slug => `/pages/${slug.slug}`);
+  const distinctCategories = [...new Set(allCategories.map(value => `/categories/${encodeURIComponent(value.category)}`))];
+  return [...post, ...page, ...distinctCategories];
+}
 export default {
   target: 'static',
   mode: 'universal',
@@ -62,7 +72,22 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxt/content',
+    '@nuxtjs/sitemap',
   ],
+  sitemap: {
+    hostname: process.env.BASE_URL,
+    gzip: true,
+    defaults: {
+      changefreq: 'weekly',
+      priority: 1,
+      lastmod: new Date().toISOString(),
+      lastmodrealtime:true
+    },
+    routes() {
+      return getAllStaticRoute();
+    },
+    trailingSlash: true
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -90,14 +115,7 @@ export default {
   watch: ['~/.env'],
   generate: {
     async routes () {
-      const { $content } = require('@nuxt/content');
-      const postSlugs = await $content('post').only(['slug', 'category']).fetch();
-      const pageSlugs = await $content('page').only(['slug']).fetch();
-      const allCategories = [...postSlugs];
-      const post = postSlugs.map(slug => `/post/${slug.slug}`);
-      const page = pageSlugs.map(slug => `/pages/${slug.slug}`);
-      const distinctCategories = [...new Set(allCategories.map(value => `/categories/${encodeURIComponent(value.category)}`))];
-      return [...post, ...page, ...distinctCategories];
+      return getAllStaticRoute();
     }
   }
 }
