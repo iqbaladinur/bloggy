@@ -4,9 +4,9 @@
     <div class="main-body">
       <nuxt />
     </div>
-    <div class="flex">
+    <div class="flex h-5">
       <a href="#" class="m-auto">
-        [^]
+        [&#9650;]
       </a>
     </div>
     <footer-bar />
@@ -26,6 +26,6 @@ export default {
 
 <style scoped>
 .main-body {
-  min-height: calc(100vh - 7.5rem);
+  min-height: calc(100vh - 8.75rem);
 }
 </style>

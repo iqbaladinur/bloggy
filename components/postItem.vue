@@ -3,6 +3,9 @@
     <nuxt-link :to="`/post/${slug}`" class="text-xl underline hover:text-blue-700">
       {{ title }}
     </nuxt-link>
+    <p class="text-xs">
+      &#128198; {{ formatLocaleDateString(createdAt) }}
+    </p>
     <div class="text-xs">
       <nuxt-link
         :to="`/categories/${encodeURIComponent(category)}`"
@@ -11,9 +14,6 @@
         &#128194; {{ category }}
       </nuxt-link>
     </div>
-    <p class="text-xs">
-      {{ formatLocaleDateString(createdAt) }}
-    </p>
     <p class="text-sm">
       {{ description }}
     </p>
