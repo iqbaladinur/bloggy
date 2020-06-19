@@ -37,6 +37,6 @@ function createPost(title, locationFolder) {
   }
 }
 
-for (let index = 0; index < 100; index++) {
+for (let index = 0; index < 3000; index++) {
   createPost(`${postTitle}-${index}`, postLocationFolder);
 }

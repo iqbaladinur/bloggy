@@ -10,6 +10,7 @@
     "start": "nuxt start",
     "serve": "nuxt serve",
     "generate": "nuxt build && nuxt export",
+    "export": "node command_tools/test.js testing && nuxt build && nuxt export",
     "create-post": "node command_tools/createPost.js",
     "create-page": "node command_tools/createPage.js"
   },
