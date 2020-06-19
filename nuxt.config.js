@@ -1,5 +1,4 @@
-require('dotenv').config();
-const getAllStaticRoute = async function() {
+const getAllDynamicRoute = async function() {
   const { $content } = require('@nuxt/content');
   const postSlugs = await $content('post').only(['slug', 'category']).fetch();
   const pageSlugs = await $content('page').only(['slug']).fetch();
@@ -11,7 +10,7 @@ const getAllStaticRoute = async function() {
 }
 export default {
   target: 'static',
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -66,11 +65,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
     '@nuxt/content',
     '@nuxtjs/sitemap',
   ],
@@ -84,15 +79,9 @@ export default {
       lastmodrealtime:true
     },
     routes() {
-      return getAllStaticRoute();
+      return getAllDynamicRoute();
     },
     trailingSlash: true
-  },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
   },
   /*
   ** Build configuration
@@ -112,10 +101,9 @@ export default {
     extend (config, ctx) {
     }
   },
-  watch: ['~/.env'],
   generate: {
     async routes () {
-      return getAllStaticRoute();
+      return getAllDynamicRoute();
     }
   }
 }

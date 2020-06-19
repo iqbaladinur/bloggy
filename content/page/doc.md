@@ -16,7 +16,10 @@ npm install
 4. Run development mode.
 
 ```bash
+# run development
 npm run dev
+#serve generated site
+npm run serve
 ```
 5. Create Content.
 
