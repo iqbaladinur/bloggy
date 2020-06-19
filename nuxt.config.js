@@ -10,7 +10,7 @@ const getAllDynamicRoute = async function() {
 }
 export default {
   target: 'static',
-  mode: 'spa',
+  mode: process.env.NODE_ENV === 'development' ? 'spa' : 'universal',
   /*
   ** Headers of the page
   */
