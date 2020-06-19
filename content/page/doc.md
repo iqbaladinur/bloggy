@@ -18,7 +18,7 @@ npm install
 ```bash
 # run development
 npm run dev
-#serve generated site
+#serve generated site on./dist
 npm run serve
 ```
 5. Create Content.
