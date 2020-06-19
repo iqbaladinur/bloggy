@@ -8,6 +8,7 @@ const getAllDynamicRoute = async function() {
   const distinctCategories = [...new Set(allCategories.map(value => `/categories/${encodeURIComponent(value.category)}`))];
   return [...post, ...page, ...distinctCategories];
 }
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.BASE_URL;
 export default {
   target: 'static',
   mode: process.env.NODE_ENV === 'development' ? 'spa' : 'universal',
@@ -22,14 +23,18 @@ export default {
       { hid: 'description', name: 'description', content: process.env.BLOG_DESC },
       { hid: 'og:title', property: 'og:title', content: process.env.BLOG_TITLE },
       { hid: 'og:description', property: 'og:description', content: process.env.BLOG_DESC },
+      { hid: 'og:image', property: 'og:image', content: `${baseUrl}/icon.png` },
+      { hid: 'og:url', property: 'og:url', content: `${baseUrl}` },
       { hid: 'twitter:title', name: 'twitter:title', content: process.env.BLOG_TITLE },
-      { hid: 'twitter:description', name: 'twitter:description', content: process.env.BLOG_DESC }
+      { hid: 'twitter:description', name: 'twitter:description', content: process.env.BLOG_DESC },
+      { hid: 'twitter:image', name: 'twitter:image', content: `${baseUrl}/icon.png` },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
   env: {
+    baseUrl,
     blogTitle: process.env.BLOG_TITLE,
     blogDesc: process.env.BLOG_DESC,
     perPage: Number(process.env.POST_PAGINATION_PERPAGE || 10)

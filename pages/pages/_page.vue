@@ -16,6 +16,7 @@ export default {
         { hid: 'description', name: 'description', content: this.content.description },
         { hid: 'og:title', property: 'og:title', content: titlePage },
         { hid: 'og:description', property: 'og:description', content: this.content.description },
+        { hid: 'og:url', property: 'og:url', content: `${process.env.baseUrl}/pages/${this.content.slug}` },
         { hid: 'twitter:title', name: 'twitter:title', content: titlePage },
         { hid: 'twitter:description', name: 'twitter:description', content: this.content.description }
       ]

@@ -33,6 +33,7 @@ export default {
         { hid: 'description', name: 'description', content: desc },
         { hid: 'og:title', property: 'og:title', content: categorySlug },
         { hid: 'og:description', property: 'og:description', content: desc },
+        { hid: 'og:url', property: 'og:url', content: `${process.env.baseUrl}/categories/${this.category}` },
         { hid: 'twitter:title', name: 'twitter:title', content: categorySlug },
         { hid: 'twitter:description', name: 'twitter:description', content: desc }
       ]
@@ -56,6 +57,7 @@ export default {
     return {
       posts,
       categorySlug,
+      category: params.category
     }
   },
   data() {

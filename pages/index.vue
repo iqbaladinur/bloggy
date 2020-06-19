@@ -37,18 +37,6 @@ const sortKey = 'title';
 const sortDirection = 'desc';
 export default {
   name: 'Home',
-  head () {
-    return {
-      title: process.env.blogTitle,
-      meta: [
-        { hid: 'description', name: 'description', content: process.env.blogDesc },
-        { hid: 'og:title', property: 'og:title', content: process.env.blogTitle },
-        { hid: 'og:description', property: 'og:description', content: process.env.blogDesc },
-        { hid: 'twitter:title', name: 'twitter:title', content: process.env.blogTitle },
-        { hid: 'twitter:description', name: 'twitter:description', content: process.env.blogDesc }
-      ]
-    }
-  },
   components: {
     postItem
   },
