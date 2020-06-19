@@ -34,6 +34,7 @@ export default {
         { hid: 'og:title', property: 'og:title', content: categorySlug },
         { hid: 'og:description', property: 'og:description', content: desc },
         { hid: 'og:url', property: 'og:url', content: `${process.env.baseUrl}/categories/${this.category}` },
+        { hid: 'og:image', property: 'og:image', content: `${process.env.baseUrl}/image.png` },
         { hid: 'twitter:title', name: 'twitter:title', content: categorySlug },
         { hid: 'twitter:description', name: 'twitter:description', content: desc }
       ]

@@ -31,6 +31,7 @@ export default {
         { hid: 'og:title', property: 'og:title', content: `${process.env.blogTitle} | Categories` },
         { hid: 'og:description', property: 'og:description', content: 'All Categories' },
         { hid: 'og:url', property: 'og:url', content: `${process.env.baseUrl}/categories` },
+        { hid: 'og:image', property: 'og:image', content: `${process.env.baseUrl}/image.png` },
         { hid: 'twitter:title', name: 'twitter:title', content: `${process.env.blogTitle} | Categories` },
         { hid: 'twitter:description', name: 'twitter:description', content: 'All Categories' }
       ]
