@@ -7,11 +7,14 @@
       &#128198; {{ formatLocaleDateString(createdAt) }}
     </p>
     <div class="text-xs">
+      &#128194;
       <nuxt-link
-        :to="`/categories/${encodeURIComponent(category)}`"
+        v-for="(c, k) in categoryArray"
+        :key="k"
+        :to="`/categories/${encodeURIComponent(c)}`"
         class="hover:text-blue-300"
       >
-        &#128194; {{ category }}
+        {{ `${c}${k == categoryArray.length - 1 ? '':','}` }}
       </nuxt-link>
     </div>
     <p class="text-sm">
@@ -22,6 +25,7 @@
 
 <script>
 import { formatLocaleDateString } from '~/helper/dateHelper';
+import { categoryRegex } from '~/helper/commonHelper';
 
 export default {
   name: 'PostItem',
@@ -52,8 +56,13 @@ export default {
       required: false
     }
   },
+  computed: {
+    categoryArray() {
+      return this.category.split(categoryRegex());
+    }
+  },
   methods: {
-    formatLocaleDateString
+    formatLocaleDateString,
   },
 }
 </script>

@@ -54,7 +54,7 @@ export default {
   async asyncData ({ $content, params }) {
     // change the limit for pagination
     const categorySlug = decodeURIComponent(params.category);
-    const posts = await $content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).where({ category : categorySlug }).fetch();
+    const posts = await $content('post').sortBy(sortKey, sortDirection).only(requiredPostKey).where({ category : { $contains: categorySlug } }).fetch();
     return {
       posts,
       categorySlug,

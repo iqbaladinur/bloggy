@@ -7,11 +7,14 @@
       &#128198; {{ `${formatLocaleDateString(content.publishedAt)} by ${content.author}` }}
     </h2>
     <div class="text-xs">
+      &#128194;
       <nuxt-link
-        :to="`/categories/${encodeURIComponent(content.category)}`"
+        v-for="(c, k) in categoryArray"
+        :key="k"
+        :to="`/categories/${encodeURIComponent(c)}`"
         class="hover:text-blue-300"
       >
-        &#128194; {{ content.category }}
+        {{ `${c}${k == categoryArray.length - 1 ? '':','}` }}
       </nuxt-link>
     </div>
     <nuxt-content :document="content" />
@@ -20,6 +23,7 @@
 
 <script>
 import { formatLocaleDateString } from '~/helper/dateHelper';
+import { categoryRegex } from '~/helper/commonHelper';
 
 export default {
   head () {
@@ -64,8 +68,13 @@ export default {
       content: content.length > 0 ? content[0] : null
     }
   },
+  computed: {
+    categoryArray() {
+      return this.content.category.split(categoryRegex());
+    }
+  },
   methods: {
-    formatLocaleDateString
+    formatLocaleDateString,
   },
 }
 </script>

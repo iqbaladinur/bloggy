@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { categoryRegex } from '@/helper/commonHelper';
 export default {
   name: 'Categories',
   head () {
@@ -46,9 +47,13 @@ export default {
     }
   },
   async asyncData ({ $content }) {
-    // change the limit for pagination
     const allCategory = await $content('post').only(['category']).fetch();
-    const distinctCategories = [...new Set(allCategory.map(value => value.category))];
+    const allCategoryIntoArray = allCategory.reduce((val, next) => {
+      const regex = categoryRegex();
+      val.push(...next.category.split(regex));
+      return val;
+    }, []);
+    const distinctCategories = [...new Set(allCategoryIntoArray)];
     return {
       distinctCategories
     }
