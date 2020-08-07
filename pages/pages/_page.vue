@@ -1,5 +1,6 @@
 <template>
   <div class="container mx-auto lg:px-40 px-10">
+    <br>
     <nuxt-content :document="content" />
   </div>
 </template>
@@ -23,7 +24,6 @@ export default {
       ]
     }
   },
-  layout: 'default',
   name: 'SinglePage',
   async fetch({ store, $content, error }) {
     try {
